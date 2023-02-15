@@ -14,15 +14,10 @@ no matching manifest for linux/arm64/v8 in the manifest list entries
 ```
 以下を追加
 ```
-  db:
-    container_name: zeloplus-db
-    platform: linux/x86_64       // 追加
+db:
+    platform: linux/x86_64    //追加
+    container_name: test-db
     image: mysql:5.7
-```
-
-##
-```
-Error establishing a database connection
 ```
 
 ## URL
