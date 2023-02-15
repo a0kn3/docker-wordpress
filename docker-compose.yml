@@ -1,0 +1,30 @@
+version: '3.1'
+
+services:
+
+  wordpress:
+    container_name: test-wp
+    image: wordpress:6.1-php8.1
+    ports:
+       - "8000:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: admin
+      WORDPRESS_DB_PASSWORD: password
+      WORDPRESS_DB_NAME: testdb
+    depends_on:
+       - db
+
+  db:
+    platform: linux/x86_64
+    container_name: test-db
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: testdb
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: password
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+
